@@ -283,7 +283,7 @@ void *thread_fn(void *socket_new)
     {
         len = strlen(buffer);
 
-        if (strtsr(buffer, "\r\n\r\n") == NULL)
+        if (strstr(buffer, "\r\n\r\n") == NULL)
         {
             bytes_send_client = recv(socket, buffer + len, MAX_BYTES - len, 0);
         }
@@ -305,7 +305,7 @@ void *thread_fn(void *socket_new)
         len = strlen(buffer);
         struct parsed_request *request = parsed_request_create();
 
-        if (parsed_request_parsed(request, buffer, len) < 0)
+        if (parsed_request_parse(request, buffer, len) < 0)
         {
             fprintf(stderr, "Parsing failed\n");
         }

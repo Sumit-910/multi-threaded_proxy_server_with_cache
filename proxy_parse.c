@@ -167,7 +167,9 @@ int parsed_header_parse(struct parsed_request *pr, char *line){
 
     key = (char *)malloc((index1-line+1)*sizeof(char));
     memcpy(key,line,index1-line);
-    key[strlen(index1-line)] = '\0';
+    size_t key_len = index1 - line;
+    key[key_len] = '\0';
+
 
     index1 += 2;
     index2 = strstr(index1, "\r\n");
@@ -205,7 +207,7 @@ struct parsed_request* parsed_request_create(){
         pr->host = NULL;
         pr->path = NULL;
         pr->version = NULL;
-        pr->buflen = NULL;
+        pr->buflen = 0;
     }
     return pr;
 }
@@ -404,7 +406,7 @@ size_t parsed_request_line_len(struct parsed_request *pr){
 
     size_t len = strlen(pr->method) + 1 + strlen(pr->protocol) + 3 + strlen(pr->host) + 1 + strlen(pr->version) + 2;
     if(pr->port != NULL){len += strlen(pr->port) + 1;}
-    len += tsrlen(pr->path);
+    len += strlen(pr->path);
     return len;
 }
 

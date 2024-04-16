@@ -31,7 +31,7 @@ struct parsed_request{
 };
 
 struct parsed_request* parsed_request_create();
-int parsed_request_parsed(struct parsed_request *parse, const char *buf, int buflen);
+int parsed_request_parse(struct parsed_request *parse, const char *buf, int buflen);
 void parsed_request_destroy(struct parsed_request *pr);
 int parsed_request_unparse(struct parsed_request *pr, char *buf, size_t buflen);
 int parsed_request_unparse_headers(struct parsed_request *pr, char *buf, size_t buflen);

@@ -324,7 +324,7 @@ void *thread_fn(void *socket_new)
         char response[MAX_BYTES];
         while (pos < size)
         {
-            mamset(response, 0, MAX_BYTES);
+            memset(response, 0, MAX_BYTES);
             for (int i = 0; i < MAX_BYTES; i++)
             {
                 response[i] = temp->data[pos];
@@ -426,7 +426,7 @@ int main(int argc, char const *argv[])
 
     memset((char *)&server_addr, 0, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
-    server_addr.sin_port = hton(port);
+    server_addr.sin_port = htons(port);
     server_addr.sin_addr.s_addr = INADDR_ANY;
 
     if (bind(proxy_socket_id, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0)
