@@ -37,11 +37,6 @@ This project is implemented using `C` and Parsing of HTTP referred from <a href 
 - We can decide which type of websites should be allowed by extending the code.
 - We can implement requests like POST with this code.
 
-
-# Note :-
-- Code is well commented. For any doubt you can refer to the comments.
-
-
 ## How to Run
 
 ```bash
