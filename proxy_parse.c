@@ -175,7 +175,7 @@ int parsed_header_parse(struct parsed_request *pr, char *line){
     index2 = strstr(index1, "\r\n");
     value = (char *)malloc((index2-index1+1)*sizeof(char));
     memcpy(value,index1,(index2-index1));
-    value[strlen(index2-index1)] = '\0';
+    value[strlen(index2) - strlen(index1)] = '\0';
 
     parsed_header_set(pr, key, value);
     free(key);
